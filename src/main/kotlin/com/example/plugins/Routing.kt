@@ -2,6 +2,7 @@ package com.example.plugins
 
 import com.example.model.Customer
 import com.example.model.presentation.Account
+import com.example.repository.AccountRepositoryImpl
 import com.example.routes.accountRouting
 import com.example.routes.customerRouting
 import io.ktor.server.application.*
@@ -14,6 +15,9 @@ val accountStorage = mutableListOf<Account>()
 val json = Json { ignoreUnknownKeys = true }
 
 fun Application.configureRouting() {
+
+    val accountRepository = AccountRepositoryImpl()
+
     initializeDatabase()
     routing {
         route("/") {
@@ -22,7 +26,7 @@ fun Application.configureRouting() {
             }
         }
         customerRouting()
-        accountRouting()
+        accountRouting(accountRepository)
     }
 }
 
