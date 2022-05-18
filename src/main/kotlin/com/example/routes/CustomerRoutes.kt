@@ -11,11 +11,6 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.encodeToString
 
 fun Route.customerRouting() {
-    route("/") {
-        get {
-            call.respondText("test")
-        }
-    }
     route("/customer") {
         get {
             if (customerStorage.isNotEmpty()) {
