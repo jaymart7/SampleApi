@@ -4,14 +4,12 @@ import com.example.model.BaseResponse
 import com.example.model.LoginRequest
 import com.example.model.mapper.toAccountResponse
 import com.example.model.request.AccountRequest
-import com.example.plugins.json
 import com.example.repository.AccountRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.serialization.encodeToString
 
 fun Route.accountRouting(accountRepository: AccountRepository) {
 
@@ -31,9 +29,9 @@ fun Route.accountRouting(accountRepository: AccountRepository) {
                     data = accountResponse,
                     message = "Successfully login"
                 )
-                call.respondText(
-                    json.encodeToString(response),
-                    status = HttpStatusCode.OK
+                call.respond(
+                    HttpStatusCode.OK,
+                    response
                 )
             }
         }

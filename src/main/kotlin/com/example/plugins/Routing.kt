@@ -33,5 +33,5 @@ fun Application.configureRouting() {
 fun initializeDatabase() {
     customerStorage.add(Customer("1", "Jaymart", "Araga", "jaymart@yahoo.com"))
 
-    accountStorage.add(Account(1, "Jaymart", "jaymart7", "araga"))
+    accountStorage.add(Account(1, "Jaymart", "a", "a"))
 }
