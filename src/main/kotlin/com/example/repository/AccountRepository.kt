@@ -6,17 +6,17 @@ import com.example.model.mapper.toAccountResponse
 import com.example.model.presentation.Account
 import com.example.model.request.AccountRequest
 import com.example.model.response.AccountResponse
-import com.example.plugins.accountStorage
 import java.util.*
-
 
 val accountStorage = mutableListOf<Account>()
 
 interface AccountRepository {
 
+    fun login(loginRequest: LoginRequest): AccountResponse?
+
     fun addAccount(accountRequest: AccountRequest)
 
-    fun login(loginRequest: LoginRequest): AccountResponse?
+    fun getAccount(username: String): AccountResponse?
 }
 
 class AccountRepositoryImpl : AccountRepository {
@@ -30,5 +30,11 @@ class AccountRepositoryImpl : AccountRepository {
         accountStorage.find { account ->
             account.username == loginRequest.username && account.password == loginRequest.password
         }?.toAccountResponse()
+
+    override fun getAccount(username: String): AccountResponse? {
+        return accountStorage.find { account ->
+            account.username == username
+        }?.toAccountResponse()
+    }
 
 }

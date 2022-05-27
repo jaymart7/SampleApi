@@ -3,15 +3,14 @@ package com.example.plugins
 import com.example.model.Customer
 import com.example.model.presentation.Account
 import com.example.repository.AccountRepositoryImpl
+import com.example.repository.accountStorage
 import com.example.routes.accountRouting
 import com.example.routes.customerRouting
 import io.ktor.server.application.*
-import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 
 val customerStorage = mutableListOf<Customer>()
-val accountStorage = mutableListOf<Account>()
 val json = Json { ignoreUnknownKeys = true }
 
 fun Application.configureRouting() {
@@ -20,11 +19,6 @@ fun Application.configureRouting() {
 
     initializeDatabase()
     routing {
-        route("/") {
-            get {
-                call.respondText("test")
-            }
-        }
         customerRouting()
         accountRouting(accountRepository)
     }

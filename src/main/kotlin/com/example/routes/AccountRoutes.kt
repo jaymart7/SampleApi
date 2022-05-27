@@ -1,38 +1,57 @@
 package com.example.routes
 
-import com.example.model.BaseResponse
+import com.auth0.jwt.JWT
+import com.auth0.jwt.algorithms.Algorithm
 import com.example.model.LoginRequest
-import com.example.model.mapper.toAccountResponse
 import com.example.model.request.AccountRequest
 import com.example.repository.AccountRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
+import io.ktor.server.auth.jwt.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import java.util.*
 
 fun Route.accountRouting(accountRepository: AccountRepository) {
+
+    val secret = environment?.config?.property("jwt.secret")?.getString()
+    val issuer = environment?.config?.property("jwt.issuer")?.getString()
+    val audience = environment?.config?.property("jwt.audience")?.getString()
+
+    authenticate("auth-jwt") {
+        get("/account") {
+            val principal = call.principal<JWTPrincipal>()
+            val username = principal!!.payload.getClaim("username").asString()
+            val accountResponse = accountRepository.getAccount(username)
+
+            if (accountResponse != null) {
+                call.respond(HttpStatusCode.OK, accountResponse)
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Account not found")
+            }
+        }
+    }
 
     route("/login") {
         post {
             val loginRequest = call.receive<LoginRequest>()
+            val accountSession = accountRepository.login(loginRequest)
 
-            val accountResponse = accountRepository.login(loginRequest)
-
-            if (accountResponse == null) {
+            if (accountSession == null) {
                 call.respondText(
                     "Account not found",
                     status = HttpStatusCode.NotFound
                 )
             } else {
-                val response = BaseResponse(
-                    data = accountResponse,
-                    message = "Successfully login"
-                )
-                call.respond(
-                    HttpStatusCode.OK,
-                    response
-                )
+                val token = JWT.create()
+                    .withAudience(audience)
+                    .withIssuer(issuer)
+                    .withClaim("username", loginRequest.username)
+                    .withExpiresAt(Date(System.currentTimeMillis() + 60000))
+                    .sign(Algorithm.HMAC256(secret))
+                call.respond(hashMapOf("token" to token))
             }
         }
     }
@@ -43,11 +62,7 @@ fun Route.accountRouting(accountRepository: AccountRepository) {
 
             accountRepository.addAccount(accountRequest)
 
-            val response = BaseResponse(
-                data = accountRequest.toAccountResponse(),
-                message = "Successfully registered"
-            )
-            call.respond(response)
+            call.respond(HttpStatusCode.OK, "Account Successfully created")
         }
     }
 }

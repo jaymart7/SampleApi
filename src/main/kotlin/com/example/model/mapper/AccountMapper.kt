@@ -12,11 +12,6 @@ fun AccountRequest.toAccount(id: Int): Account = Account(
 )
 
 fun Account.toAccountResponse(): AccountResponse = AccountResponse(
-    name = name,
-    username = username
-)
-
-fun AccountRequest.toAccountResponse(): AccountResponse = AccountResponse(
-    name = name,
-    username = username
+    username = username,
+    name = name
 )
