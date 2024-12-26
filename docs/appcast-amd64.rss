@@ -1,0 +1,22 @@
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>Timetap Changelog</title>
+        <link>http://localhost:3000/appcast-amd64.rss</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>Version 1.1</title>
+            <link>http://localhost:3000/</link>
+            <sparkle:version>1.1.0</sparkle:version>
+            <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
+            <description>
+                <![CDATA[ New release: version 1.1 ]]>
+            </description>
+            <pubDate>Tue, 24 Dec 2024 11:38:08 GMT</pubDate>
+            <enclosure url="http://localhost:3000/timetap-1.1-mac-amd64.zip" 
+                       length="118067237" 
+                       type="application/octet-stream" 
+                       sparkle:edSignature="4i5umTHcCSUnkJbZolgkMf4ksqnOXI+pQXM0usY7TYtdKQazN5Qz45Z2Mh5IQRaGD5b6+51dVw1Nr43xmgKRDQ=="/>
+        </item>
+    </channel>
+</rss>

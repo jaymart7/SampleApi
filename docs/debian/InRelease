@@ -1,0 +1,28 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Architectures: amd64
+Components: main
+Date: Tue, 24 Dec 2024 11:37:48 GMT
+Description: Public archive for Timetap
+Origin: Timetap
+Suite: debian
+MD5Sum:
+ 6eeaaaea321997e5435d440bc7fe7d1e               520 Packages
+ 107114f0fbdcfa0c78c6c3c96085ee74               436 Packages.xz
+SHA1:
+ 5f9d82b49eb62f5b673d51bbc628a42baa4f87dc               520 Packages
+ e653a56e6b6b2fdf35a189a1438c78ef3db56c47               436 Packages.xz
+SHA256:
+ 01a58b2d428e3ba1856e03c2b497ba5a5a9224b26fc14b64667b4413dc4fecb5               520 Packages
+ 74232c6837ca91bf93d8ad636ae5119184504e338f7975f481f4cd4eb2abe054               436 Packages.xz
+SHA512:
+ 486237cee8ab4aa783ce49548f34f70380ffd05788bf8e9cfb5ba65c45dbf657c7d806b1817441ee115ea46b6658660a3a05a54544887d62fcd3f0995c6c3eb5               520 Packages
+ 5df79ace5846eb424f5a1038a612de2f9834fc0ecb79f19af65575c9a8d4dabf7a65423d5261649780d26a5fe2ecae537fa0a623ea6e4b8135a47a167eb24e22               436 Packages.xz
+-----BEGIN PGP SIGNATURE-----
+Version: BCPG v1.77.00
+
+iF4EARMIAAYFAmdqnQwACgkQieASZT5NEgjvfgD/UXAknYyAzHYbxrgcTiIiciMT
+BrMWNWk8KRiy7yER/+YA/jrBy9sSaYmqS3MiUaulmblqeNGYP3/zO/v3Hksf1Dca
+=4vYu
+-----END PGP SIGNATURE-----

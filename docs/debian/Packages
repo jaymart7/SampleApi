@@ -1,0 +1,14 @@
+Architecture: amd64
+Built-With: Hydraulic Conveyor
+Depends: libxi6, libgl1, libx11-6, libgcc-s1, libxtst6, libasound2t64 | liboss4-salsa-asound2, libfontconfig1, zlib1g, libxext6, libc6, libfreetype6, libxrender1, libstdc++6, libv4l-0t64
+Description: Timetap
+Installed-Size: 188769
+Maintainer: <nobody@nowhere>
+Package: timetap
+Priority: optional
+Provides: timetap
+Section: misc
+Version: 1.1
+Filename: debian/timetap_1.1_amd64.deb
+Size: 122853130
+SHA256: a29b7ca20497c87fba178c2a8dd228ea51d0d9e47e28e63fe4313de9936a0693
